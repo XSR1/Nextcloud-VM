@@ -2,13 +2,12 @@
 
 # T&M Hansson IT AB © - 2023, https://www.hanssonit.se/
 
-WANIP6=$(curl -s -k -m 5 -6 https://api64.ipify.org)
-WANIP4=$(curl -s -k -m 5 -4 https://api64.ipify.org)
+WANIP6=$(curl -s -k -m 5 -6 https://checkipv6.dedyn.io)
+WANIP4=$(curl -s -k -m 5 -4 https://checkipv4.dedyn.io)
 ADDRESS=$(hostname -I | cut -d ' ' -f 1)
 
 clear
 figlet -f small Nextcloud
-echo "https://www.hanssonit.se/nextcloud-vm"
 echo
 echo
 echo "Hostname: $(hostname -s)"
