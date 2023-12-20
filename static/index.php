@@ -75,14 +75,9 @@
         <br>
         <div class="logo"></div>
         <div class="logotext">
-            <h2><a href="https://github.com/nextcloud/vm" target="_blank">Nextcloud VM</a> - by <a href="https://www.hanssonit.se/nextcloud-vm/" target="_blank">T&M Hansson IT AB</a></h2>
+            <h2><a href="https://github.com/XSR1/Nextcloud-VM" target="_blank">Nextcloud VM</a> - by <a href="" target="_blank"></a></h2>
         </div>
         <br>
-        <div class="information">
-            <p>Thank you for downloading the Nextcloud VM, you made a good choice! If you see this page, you have run the first setup, and you are now ready to start using Nextcloud on your new server. Congratulations! :)</p>
-            <p>We have prepared everything for you, and the only thing you have to do now is to login. You can find login details further down in this page.</p>
-            <p>Don't hesitate to ask if you have any questions. You can ask for help in our community <a href="https://help.nextcloud.com/c/support/appliances-docker-snappy-vm" target="_blank">support</a> channels, or <a href="https://shop.hanssonit.se/product/premium-support-per-30-minutes/" target="_blank">buy hands on support</a> from T&M Hansson IT AB. You can also check the <a href="https://docs.hanssonit.se/s/W6fMouPiqQz3_Mog/virtual-machines-vm/d/W7Du9uPiqQz3_Mr1/nextcloud-vm-machine-configuration" target="_blank">documentation</a>.</p>
-        </div>
 
         <h2>Access Nextcloud</h2>
 
@@ -95,12 +90,6 @@
             </h3>
             <p>Note: Please accept the warning in the browser if you have a self-signed certificate.<br>
 
-            <p>It's recommended to <a href="https://docs.hanssonit.se/s/W6fMouPiqQz3_Mog/virtual-machines-vm/d/W6-83ePiqQz3_MrT/publish-your-server-online" target="_blank">get your own certificate and replace the self-signed certificate to your own.</a>
-            The easiest way to get a real TLS certificate is to run the Lets' Encrypt script included on this server.<br>
-            Just run 'sudo bash /var/scripts/menu.sh' from your CLI and choose Server Configuration --> Activate TLS.
-            <h3>
-                <a href="https://docs.hanssonit.se/s/W6fMouPiqQz3_Mog/virtual-machines-vm/d/W6fMquPiqQz3_Moi/nextcloud-vm-first-setup-instructions?currentPageId=W6yo9OPiqQz3_Mpy" target="_blank">Login details</a>
-            </h3>
         </div>
 
         <h2>Access Webmin</h2>
@@ -113,10 +102,6 @@
                 </ul>
 	    </h3>
 	    <p>Note: Please accept the warning in the browser if you have a self-signed certificate.<br>
-            <h3>
-	        <a href="https://docs.hanssonit.se/s/W6fMouPiqQz3_Mog/virtual-machines-vm/d/W6fMquPiqQz3_Moi/nextcloud-vm-first-setup-instructions?currentPageId=W6yn_ePiqQz3_Mpk" target="_blank">Login details</a>
-            </h3>
-            <p>Note: To access Webmin externally you have to open port 10000 in your router, it's not recommended though due to security concerns.</p>
         </div>
 
         <h2>Access Adminer</h2>
@@ -129,19 +114,7 @@
                 </ul>
             </h3>
             <p>Note: Please accept the warning in the browser if you have a self-signed certificate.<br>
-            <h3>
-                <a href="https://docs.hanssonit.se/s/W6fMouPiqQz3_Mog/virtual-machines-vm/d/W6fMquPiqQz3_Moi/nextcloud-vm-first-setup-instructions?currentPageId=W6ypBePiqQz3_Mp0" target="_blank">Login details</a>
-            </h3>
             <p>Note: Your LAN IP is set as approved in /etc/apache2/sites-available/adminer.conf, all other access is forbidden.</p>
         </div>
-
-        <h2>Follow us on Social Media</h2>
-
-        <div class="information">
-            <p>If you want to get the latest news and updates, please consider following us! We are very active on Twitter, and post some videos from time to time on Youtube. It might be worth checking out. ;)</p>
-        </div>
-            <p><b><a href="https://twitter.com/tmhanssonit" class="twitter-follow-button" data-show-count="false" target="_blank">Follow @tmhanssonit</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></b></p>
-            <script src="https://apis.google.com/js/platform.js"></script>
-            <div class="g-ytsubscribe" data-channelid="UCLXe8RpVdOsoapYM9_GcrfA" data-layout="full" data-count="default"></div>
     </body>
 </html>
