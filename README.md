@@ -34,8 +34,7 @@ Server installation. Simplified. :cloud:
 
 </p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate">
-<code>wget https://raw.githubusercontent.com/XSR1/Nextcloud-VM/master/nextcloud_install_production.sh
-sudo bash nextcloud_install_production.sh
-</code></pre><div class="zeroclipboard-container">
+<code>sudo bash -c "$(wget -q -O - https://raw.githubusercontent.com/XSR1/Nextcloud-VM/master/nextcloud_install_production.sh)"</code>
+</pre><div class="zeroclipboard-container">
     
 
