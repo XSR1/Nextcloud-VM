@@ -27,3 +27,9 @@ Server installation. Simplified. :cloud:
 - PHP-igbinary (latest stable version from PECL
 - PHP-smbclient (latest stable version from PECL)
 - Nextcloud Server Latest
+
+--------------------
+
+## Install:
+<code>wget https://raw.githubusercontent.com/XSR1/Nextcloud-VM/master/nextcloud_install_production.sh</code><br>
+<code>sudo bash nextcloud_install_production.sh</code>
