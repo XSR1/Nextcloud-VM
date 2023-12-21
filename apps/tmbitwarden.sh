@@ -211,10 +211,10 @@ https://help.nextcloud.com/t/domain-refused-to-connect-collabora/91303/17"
 
 if yesno_box_no "Do you want to use UPNP to open port 80 and 443?"
 then
-    unset FAIL
-    open_port 80 TCP
-    open_port 443 TCP
-    cleanup_open_port
+    #unset FAIL
+    #open_port 80 TCP
+    #open_port 443 TCP
+    #cleanup_open_port
 fi
 
 # Curl the lib another time to get the correct HTTPS_CONF
@@ -223,11 +223,11 @@ source /var/scripts/fetch_lib.sh
 
 # Check if $SUBDOMAIN exists and is reachable
 print_text_in_color "$ICyan" "Checking if $SUBDOMAIN exists and is reachable..."
-domain_check_200 "$SUBDOMAIN"
+#domain_check_200 "$SUBDOMAIN"
 
 # Check open ports with NMAP
-check_open_port 80 "$SUBDOMAIN"
-check_open_port 443 "$SUBDOMAIN"
+#check_open_port 80 "$SUBDOMAIN"
+#check_open_port 443 "$SUBDOMAIN"
 
 # Install Apache2
 install_if_not apache2
@@ -312,29 +312,12 @@ HTTPS_CREATE
 fi
 
 # Install certbot (Let's Encrypt)
-install_certbot
+#install_certbot
 
 # Generate certs and  auto-configure  if successful
-if generate_cert  "$SUBDOMAIN"
-then
-    # Generate DHparams cipher
-    if [ ! -f "$DHPARAMS_SUB" ]
-    then
-        openssl dhparam -out "$DHPARAMS_SUB" 2048
-    fi
-    print_text_in_color "$IGreen" "Certs are generated!"
-    a2ensite "$SUBDOMAIN.conf"
-    restart_webserver
-else
-    # remove settings to be able to start over again
-    rm -f "$HTTPS_CONF"
-    last_fail_tls "$SCRIPTS"/apps/tmbitwarden.sh
-    systemctl stop bitwarden
-    docker volume prune -f
-    docker system prune -af
-    rm -rf "${BITWARDEN_HOME:?}/"bwdata
-    exit 1
-fi
+print_text_in_color "$IGreen" "Certs are generated!"
+a2ensite "$SUBDOMAIN.conf"
+restart_webserver
 
 # Remove Watchtower
 if is_docker_running
