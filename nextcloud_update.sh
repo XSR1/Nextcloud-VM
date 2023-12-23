@@ -11,7 +11,7 @@
 true
 SCRIPT_NAME="Nextcloud Update Script"
 # shellcheck source=lib.sh
-source <(curl -sL https://raw.githubusercontent.com/XSR1/Nextcloud-VM/master/lib.sh)
+source <(curl -sL https://raw.githubusercontent.com/XSR1/Nextcloud-VM/tunnel/lib.sh)
 
 # Get all needed variables from the library
 ncdb
