@@ -2,7 +2,7 @@
 true
 SCRIPT_NAME="Set trusted domain"
 # shellcheck source=lib.sh
-source <(curl -sL https://raw.githubusercontent.com/XSR1/Nextcloud-VM/master/lib.sh)
+source <(curl -sL https://raw.githubusercontent.com/XSR1/Nextcloud-VM/tunnel/lib.sh)
 
 # Removed in NC 26.0.0.
 
