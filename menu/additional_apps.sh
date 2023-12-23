@@ -40,11 +40,11 @@ choice=$(whiptail --title "$TITLE" --checklist \
 $CHECKLIST_GUIDE\n\n$RUN_LATER_GUIDE" "$WT_HEIGHT" "$WT_WIDTH" 4 \
 "Documentserver" "(OnlyOffice or Collabora - Docker or Integrated)" OFF \
 "Bitwarden" "(External password manager) [4GB RAM]" OFF \
-"Fail2ban  " "(Extra Bruteforce protection)" "$STARTUP_SWITCH" \
+"Fail2ban  " "(Extra Bruteforce protection)" OFF \
 "Recognize" "(Use [local] AI on your photos in Nextcloud) [8GB RAM]" OFF \
-"Imaginary" "(Generate image previews for Nextcloud) [4GB RAM]" "$STARTUP_SWITCH" \
-"Webmin" "(Server GUI like Cpanel)" OFF \
-"Talk" "(Video calls and chat for Nextcloud - requires port 3478)" "$STARTUP_SWITCH" \
+"Imaginary" "(Generate image previews for Nextcloud) [4GB RAM]" OFF \
+"Webmin" "(Server GUI like Cpanel)" "$STARTUP_SWITCH" \
+"Talk" "(Video calls and chat for Nextcloud - requires port 3478)" OFF \
 "SMB-mount" "(Mount SMB-shares from your local network)" OFF \
 "Adminer" "(PostgreSQL GUI)" OFF \
 "LDAP" "(Windows Active directory for Nextcloud)" OFF \
