@@ -38,9 +38,9 @@ fi
 choice=$(whiptail --title "$TITLE" --checklist \
 "Choose what you want to configure
 $CHECKLIST_GUIDE\n\n$RUN_LATER_GUIDE" "$WT_HEIGHT" "$WT_WIDTH" 4 \
-"deSEC" "(Automatically set up a dedyn.io domain, together with DDNS and TLS)" "$STARTUP_SWITCH" \
+"deSEC" "(Automatically set up a dedyn.io domain, together with DDNS and TLS)" OFF \
 "DDclient Configuration" "(Use ddclient for automatic DDNS updates)" OFF \
-"Activate TLS" "(Enable HTTPS with Let's Encrypt on your domain)" "$STARTUP_SWITCH" \
+"Activate TLS" "(Enable HTTPS with Let's Encrypt on your domain)" OFF \
 "SMTP Mail" "(Enable being notified by mail from your server)" OFF \
 "Static IP" "(Set static IP in Ubuntu with netplan.io)" OFF \
 "Automatic updates" "(Automatically update your server every week on Sundays)" OFF \
