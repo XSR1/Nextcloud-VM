@@ -113,6 +113,7 @@ Description = Push daemon for Nextcloud clients
 
 [Service]
 Environment = PORT=7867
+Environment=ALLOW_SELF_SIGNED=true
 ExecStart = $NC_APPS_PATH/notify_push/bin/$ARCHITECTURE/notify_push $NCPATH/config/config.php
 User = www-data
 
