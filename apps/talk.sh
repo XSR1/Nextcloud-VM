@@ -198,14 +198,6 @@ After you hit OK, the script will check if the port is open or not. If it fails 
 and you want to run this script again, just execute this in your CLI:
 sudo bash /var/scripts/menu.sh, and choose 'Talk'."
 
-if yesno_box_no "Do you want to use UPNP to open port $TURN_PORT?"
-then
-    #unset FAIL
-    #open_port "$TURN_PORT" TCP
-    #open_port "$TURN_PORT" UDP
-    #cleanup_open_port
-fi
-
 # Check if the port is open
 check_open_port "$TURN_PORT" "$TURN_DOMAIN"
 
