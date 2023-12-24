@@ -271,14 +271,6 @@ Using other ports than the default 80 and 443 is not supported, \
 though it may be possible with some custom modification:
 https://help.nextcloud.com/t/domain-refused-to-connect-collabora/91303/17"
 
-if yesno_box_no "Do you want to use UPNP to open port 80 and 443?"
-then
-    #unset FAIL
-    #open_port 80 TCP
-    #open_port 443 TCP
-    #cleanup_open_port
-fi
-
 # Check if $SUBDOMAIN exists and is reachable
 print_text_in_color "$ICyan" "Checking if $SUBDOMAIN exists and is reachable..."
 #domain_check_200 "$SUBDOMAIN"
