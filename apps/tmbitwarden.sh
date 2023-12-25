@@ -249,10 +249,10 @@ then
     cat << HTTPS_CREATE > "$HTTPS_CONF"
 <VirtualHost *:443>
     ServerName $SUBDOMAIN:443
-    SSLCertificateChainFile $CERTFILES/$SUBDOMAIN/chain.pem
-    SSLCertificateFile $CERTFILES/$SUBDOMAIN/cert.pem
-    SSLCertificateKeyFile $CERTFILES/$SUBDOMAIN/privkey.pem
-    SSLOpenSSLConfCmd DHParameters $DHPARAMS_SUB
+    SSLCertificateFile      /etc/custom/certs/cert.crt
+    SSLCertificateKeyFile   /etc/custom/certs/privkey.key
+    #SSLCertificateChainFile /etc/custom/certs/chain.pem
+    SSLOpenSSLConfCmd DHParameters /etc/custom/certs/dhparam.pem
 
     # Intermediate configuration
     SSLEngine               on
@@ -264,6 +264,7 @@ then
     ServerSignature         off
 
     # Logs
+    RemoteIPHeader X-Forwarded-For
     LogLevel warn
     CustomLog \${APACHE_LOG_DIR}/access.log combined
     ErrorLog \${APACHE_LOG_DIR}/error.log
