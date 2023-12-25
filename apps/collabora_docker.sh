@@ -6,7 +6,7 @@ true
 SCRIPT_NAME="Collabora (Docker)"
 SCRIPT_EXPLAINER="This script will install the Collabora Office Server bundled with Docker"
 # shellcheck source=lib.sh
-source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/XSR1/Nextcloud-VM/tunnel/lib.sh)
 # To work with https://github.com/nextcloud/richdocuments/pull/2235
 
 # Check for errors + debug code and abort if something isn't right
@@ -57,7 +57,7 @@ NCDOMAIN=$(nextcloud_occ_no_check config:system:get overwrite.cli.url | sed 's|h
 
 # Curl the library another time to get the correct https_conf
 # shellcheck source=lib.sh
-source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/XSR1/Nextcloud-VM/tunnel/lib.sh)
 
 # Get all needed variables from the library
 nc_update
@@ -75,14 +75,6 @@ PLEASE NOTE:
 Using other ports than the default 80 and 443 is not supported, \
 though it may be possible with some custom modification:
 https://help.nextcloud.com/t/domain-refused-to-connect-collabora/91303/17"
-
-if yesno_box_no "Do you want to use UPNP to open port 80 and 443?"
-then
-    unset FAIL
-    open_port 80 TCP
-    open_port 443 TCP
-    cleanup_open_port
-fi
 
 # Get the latest packages
 apt-get update -q4 & spinner_loading
@@ -105,11 +97,11 @@ fi
 
 # Check if $SUBDOMAIN exists and is reachable
 print_text_in_color "$ICyan" "Checking if $SUBDOMAIN exists and is reachable..."
-domain_check_200 "$SUBDOMAIN"
+#domain_check_200 "$SUBDOMAIN"
 
 # Check open ports with NMAP
-check_open_port 80 "$SUBDOMAIN"
-check_open_port 443 "$SUBDOMAIN"
+#check_open_port 80 "$SUBDOMAIN"
+#check_open_port 443 "$SUBDOMAIN"
 
 # Test RAM size (2GB min) + CPUs (min 2)
 ram_check 2 Collabora
@@ -233,25 +225,15 @@ HTTPS_CREATE
 fi
 
 # Install certbot (Let's Encrypt)
-install_certbot
+#install_certbot
 
 # Generate certs and  auto-configure  if successful
-if generate_cert  "$SUBDOMAIN"
-then
-    # Generate DHparams cipher
-    if [ ! -f "$DHPARAMS_SUB" ]
-    then
-        openssl dhparam -out "$DHPARAMS_SUB" 2048
-    fi
-    print_text_in_color "$IGreen" "Certs are generated!"
-    a2ensite "$SUBDOMAIN.conf"
-    restart_webserver
-    # Install Collabora App
-    install_and_enable_app richdocuments
-else
-    last_fail_tls "$SCRIPTS"/apps/collabora.sh
-    exit 1
-fi
+
+print_text_in_color "$IGreen" "Certs are generated!"
+a2ensite "$SUBDOMAIN.conf"
+restart_webserver
+# Install Collabora App
+install_and_enable_app richdocuments
 
 # Set config for RichDocuments (Collabora App)
 if is_app_installed richdocuments
