@@ -89,7 +89,7 @@ if home_sme_server
 then
     PRODUCTNAME="Nextcloud HanssonIT Server"
 else
-    PRODUCTNAME="Nextcloud HanssonIT VM"
+    PRODUCTNAME="Nextcloud-VM"
 fi
 if is_app_installed theming
 then
