@@ -94,22 +94,13 @@ Using other ports than the default 80 and 443 is not supported, \
 though it may be possible with some custom modification:
 https://help.nextcloud.com/t/domain-refused-to-connect-collabora/91303/17"
 
-# Ask for UPNP
-if yesno_box_no "Do you want to use UPNP to open port 80 and 443?"
-then
-    unset FAIL
-    open_port 80 TCP
-    open_port 443 TCP
-    cleanup_open_port
-fi
-
 # Check if $SUBDOMAIN exists and is reachable
 print_text_in_color "$ICyan" "Checking if $SUBDOMAIN exists and is reachable..."
-domain_check_200 "$SUBDOMAIN"
+#domain_check_200 "$SUBDOMAIN"
 
 # Check open ports with NMAP
-check_open_port 80 "$SUBDOMAIN"
-check_open_port 443 "$SUBDOMAIN"
+#check_open_port 80 "$SUBDOMAIN"
+#check_open_port 443 "$SUBDOMAIN"
 
 # Install Apache2
 install_if_not apache2
@@ -139,10 +130,10 @@ then
     cat << HTTPS_CREATE > "$HTTPS_CONF"
 <VirtualHost *:443>
     ServerName $SUBDOMAIN:443
-    SSLCertificateChainFile $CERTFILES/$SUBDOMAIN/chain.pem
-    SSLCertificateFile $CERTFILES/$SUBDOMAIN/cert.pem
-    SSLCertificateKeyFile $CERTFILES/$SUBDOMAIN/privkey.pem
-    SSLOpenSSLConfCmd DHParameters $DHPARAMS_SUB
+    SSLCertificateFile      /etc/custom/certs/cert.crt
+    SSLCertificateKeyFile   /etc/custom/certs/privkey.key
+    #SSLCertificateChainFile /etc/custom/certs/chain.pem
+    SSLOpenSSLConfCmd DHParameters /etc/custom/certs/dhparam.pem
 
     # Intermediate configuration
     SSLEngine               on
@@ -154,6 +145,7 @@ then
     ServerSignature         off
 
     # Logs
+    RemoteIPHeader X-Forwarded-For
     LogLevel warn
     CustomLog \${APACHE_LOG_DIR}/access.log combined
     ErrorLog \${APACHE_LOG_DIR}/error.log
@@ -195,25 +187,12 @@ HTTPS_CREATE
 fi
 
 # Install certbot (Let's Encrypt)
-install_certbot
+#install_certbot
 
 # Generate certs and  auto-configure  if successful
-if generate_cert  "$SUBDOMAIN"
-then
-    # Generate DHparams cipher
-    if [ ! -f "$DHPARAMS_SUB" ]
-    then
-        openssl dhparam -out "$DHPARAMS_SUB" 2048
-    fi
-    print_text_in_color "$IGreen" "Certs are generated!"
-    a2ensite "$SUBDOMAIN.conf"
-    restart_webserver
-else
-    # remove settings to be able to start over again
-    rm -f "$HTTPS_CONF"
-    last_fail_tls "$SCRIPTS"/apps/tmbitwarden.sh
-    exit 1
-fi
+print_text_in_color "$IGreen" "Certs are generated!"
+a2ensite "$SUBDOMAIN.conf"
+restart_webserver
 
 # Install docker
 install_docker
